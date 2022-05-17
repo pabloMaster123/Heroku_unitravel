@@ -50,6 +50,7 @@ public class HabitacionServicioTest {
             LocalDate fechaInicio = LocalDate.of(2022, Month.DECEMBER,26);
             LocalDate fechaFinal = LocalDate.of(2023, Month.JANUARY,10);
             habitacionServicio.listarHabitacionesDisponiblesPorFechas(fechaInicio,fechaFinal).forEach(u -> System.out.println(u));
+            Assertions.assertEquals(1, habitacionServicio.listarHabitacionesDisponiblesPorFechas(fechaInicio,fechaFinal).size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -60,6 +61,7 @@ public class HabitacionServicioTest {
     public void listarHabitacionesTest() {
         try {
             habitacionServicio.listarHabitaciones().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(habitacionRepo.findAll(),  habitacionServicio.listarHabitaciones().size());
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -69,6 +69,7 @@ public class HotelServicioTest {
     public void buscarHotelPorNombreTest()  {
         try {
             System.out.println(hotelServicio.buscarHotelPorNombre("Hotel Ciudad Fria"));
+            Assertions.assertEquals(1,hotelServicio.buscarHotelPorNombre("Hotel Ciudad Fria").size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -90,6 +91,7 @@ public class HotelServicioTest {
     public void listarTest()  {
         try {
             hotelServicio.listar().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(hotelRepo.findAll().size(),hotelServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -100,6 +102,7 @@ public class HotelServicioTest {
     public void listarHotelPorCiudadTest()  {
         try {
             hotelServicio.listarHotelPorCiudad("Bogota").forEach(u -> System.out.println(u));
+            Assertions.assertEquals(3, hotelServicio.listarHotelPorCiudad("Bogota").size());
         }catch (Exception e){
             e.printStackTrace();
         }

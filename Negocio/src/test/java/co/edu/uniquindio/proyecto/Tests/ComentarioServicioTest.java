@@ -77,6 +77,7 @@ public class ComentarioServicioTest {
     public void buscarComentarioPorCalificacionTest() {
         try {
             System.out.println(comentarioServicio.buscarComentarioPorCalificacion(5));
+            Assertions.assertEquals(1, comentarioServicio.buscarComentarioPorCalificacion(5).size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -87,6 +88,7 @@ public class ComentarioServicioTest {
     public void listarTest(){
         try {
             comentarioServicio.listar().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(comentarioRepo.findAll().size(), comentarioServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }

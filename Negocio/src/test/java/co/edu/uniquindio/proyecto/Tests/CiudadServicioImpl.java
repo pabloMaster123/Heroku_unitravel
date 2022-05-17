@@ -73,6 +73,7 @@ public class CiudadServicioImpl {
     public void listarTest()  {
         try {
             ciudadServicio.listar().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(ciudadRepo.findAll().size(), ciudadServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }

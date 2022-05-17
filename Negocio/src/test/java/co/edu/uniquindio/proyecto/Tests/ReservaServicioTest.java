@@ -111,6 +111,7 @@ public class ReservaServicioTest {
     public void listarTest() {
         try {
             reservaServicio.listar().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(reservaRepo.findAll().size(), reservaServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -122,6 +123,7 @@ public class ReservaServicioTest {
         try {
             LocalDate fechaInicio = LocalDate.of(2022, Month.APRIL,26);
             reservaServicio.listarReservaPorFechaDeFinalizacion(fechaInicio).forEach(u -> System.out.println(u));
+            Assertions.assertEquals(reservaRepo.findAll().size(), reservaServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -133,6 +135,7 @@ public class ReservaServicioTest {
         try {
             LocalDate fechaFinal = LocalDate.of(2022, Month.APRIL,30);
             reservaServicio.listarReservaPorFechaDeFinalizacion(fechaFinal).forEach(u -> System.out.println(u));
+            Assertions.assertEquals(reservaRepo.findAll().size(), reservaServicio.listarReservaPorFechaDeFinalizacion(fechaFinal).size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -143,6 +146,8 @@ public class ReservaServicioTest {
     public void listarReservaPorIdDeClienteTest() {
         try {
             reservaServicio.listarReservaPorIdDeCliente("1000000001").forEach(u -> System.out.println(u));
+            Assertions.assertEquals(reservaRepo.findAll().size(),reservaServicio.listarReservaPorIdDeCliente("1000000001").size());
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -163,6 +168,7 @@ public class ReservaServicioTest {
     public void listarReservaPorHabitacionTest() {
         try {
             reservaServicio.listarReservaPorHabitacion(habitacionRepo.getById(2)).forEach(u -> System.out.println(u));
+            Assertions.assertEquals(reservaRepo.findAll().size(),reservaServicio.listarReservaPorHabitacion(habitacionRepo.getById(2)).size());
         }catch (Exception e){
             e.printStackTrace();
         }

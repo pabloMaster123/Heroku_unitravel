@@ -72,6 +72,7 @@ public class CaracteristicasServicioTest {
     public void buscarCaracteristicasPorContenidoTest()  {
         try {
             System.out.println(caracteristicaServicio.buscarCaracteristicasPorContenido("Aire acondicionado"));
+            Assertions.assertEquals(1, caracteristicaServicio.buscarCaracteristicasPorContenido("Aire acondicionado").size());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -82,6 +83,7 @@ public class CaracteristicasServicioTest {
     public void listarTest()  {
         try {
             caracteristicaServicio.listar().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(caracteristicaRepo.findAll().size(),caracteristicaServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -84,6 +84,7 @@ public class ClienteServicioTest {
     public void listar() {
         try {
             clienteServicio.listar().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(clienteRepo.findAll().size(), clienteServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -78,6 +78,7 @@ public class VueloServicioTest {
     public void buscarVueloPorCodigoTest() {
         try{
             System.out.println(vueloServicio.buscarVueloPorCodigo(1));
+            Assertions.assertEquals(vueloRepo.findById(1).get(), vueloServicio.buscarVueloPorCodigo(1));
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,6 +89,7 @@ public class VueloServicioTest {
     public void buscarVueloPorOrigenTest() {
         try{
             System.out.println(vueloServicio.buscarVueloPorOrigen(ciudadRepo.getById(1).getNombre()));
+            Assertions.assertEquals(vueloRepo.buscarPorNombreDeCiudadDeOrigen(ciudadRepo.getById(1).getNombre()).size(), vueloServicio.buscarVueloPorOrigen(ciudadRepo.getById(1).getNombre()).size());
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +100,7 @@ public class VueloServicioTest {
     public void buscarVueloPorDestinoTest() {
         try{
             System.out.println(vueloServicio.buscarVueloPorDestino(ciudadRepo.getById(1).getNombre()));
+            Assertions.assertEquals(vueloRepo.buscarPorNombreDeCiudadDeDestino(ciudadRepo.getById(1).getNombre()).size(), vueloServicio.buscarVueloPorDestino(ciudadRepo.getById(1).getNombre()).size());
         }catch (Exception e) {
             e.printStackTrace();
         }

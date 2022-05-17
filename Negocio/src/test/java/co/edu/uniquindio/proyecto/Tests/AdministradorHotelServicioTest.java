@@ -73,7 +73,7 @@ public class AdministradorHotelServicioTest {
     public void buscarAdministradorDeHotelPorCedulaTest(){
         try {
             System.out.println(administradorHotelServicio.buscarAdministradorDeHotelPorCedula("2345678901"));
-            Assertions.assertEquals("Nicolas Mendoza", administradorHotelRepo.findById("2345678901").get().getNombre());
+            Assertions.assertEquals("Nicolas Mendoza", administradorHotelServicio.buscarAdministradorDeHotelPorCedula("2345678901").getNombre());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class AdministradorHotelServicioTest {
     public void buscarAdministradorDeHotelPorCodigoTest(){
         try {
             System.out.println(administradorHotelServicio.buscarAdministradorDeHotelPorCodigo(95));
-            Assertions.assertEquals("Nicolas Mendoza", administradorHotelRepo.findByCodigo(95).get().getNombre());
+            Assertions.assertEquals("Nicolas Mendoza", administradorHotelServicio.buscarAdministradorDeHotelPorCodigo(95).getNombre());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -106,6 +106,7 @@ public class AdministradorHotelServicioTest {
     public void listar(){
         try {
             administradorHotelServicio.listar().forEach(u -> System.out.println(u));
+            Assertions.assertEquals(administradorHotelRepo.findAll().size(),administradorHotelServicio.listar().size());
         }catch (Exception e){
             e.printStackTrace();
         }

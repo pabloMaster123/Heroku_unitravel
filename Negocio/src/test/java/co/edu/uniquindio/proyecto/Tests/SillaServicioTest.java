@@ -56,6 +56,7 @@ public class SillaServicioTest {
         try {
             Vuelo vuelo = vueloRepo.getById(5);
             sillaServicio.listarPorVuelo(vuelo).forEach(u -> System.out.println(u));
+            Assertions.assertEquals(vueloRepo.getById(5).getSillas().size(), sillaServicio.listarPorVuelo(vuelo).size());
         }catch (Exception e){
             e.printStackTrace();
         }
