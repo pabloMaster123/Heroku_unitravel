@@ -1,0 +1,11 @@
+#Archivos compilados
+*.class
+
+#Archivos temporales de Maven
+/**/build/
+
+#Archivos de Intellij
+*.iml
+/.idea
+
+/**/src/test/
